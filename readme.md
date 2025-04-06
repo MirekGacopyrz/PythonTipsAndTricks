@@ -3,4 +3,4 @@
 ## Introduction
 
 In this section some introductory items will be placed soon:
-![Sundial]("czas.png")
+![Sundial]("./czas.png")
