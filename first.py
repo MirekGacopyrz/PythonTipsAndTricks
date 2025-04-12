@@ -49,7 +49,7 @@ emoji_map = {
 # Zmiana kierunku grafu na pionowy
 dot = Digraph('TimelineXIXVertical', format='svg')
 dot.attr(rankdir='TB', size='8')
-dot.attr('node', shape='box', style='rounded,filled')
+dot.attr('node', shape='box', style='rounded,filled', fixedsize='true', width='3')  # Dodano fixedsize i width
 
 # Modyfikacja: pionowy układ, ikony (jako emoji), zaokrąglone prostokąty
 
