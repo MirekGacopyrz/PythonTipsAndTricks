@@ -42,5 +42,28 @@ def create_svg(filename, size=("1920px", "1080px"), header_href="header.svg", bo
     logging.info(f"SVG image saved as {filename}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="
-
+    parser = argparse.ArgumentParser(description="Create an SVG slide with headers.")
+    parser.add_argument("filename", help="Output SVG file name")
+    parser.add_argument("--size", default=DEFAULT_SIZE, help="SVG dimensions (e.g., 1920x1080)")
+    parser.add_argument("--header", default=DEFAULT_HEADER, help="Header image file")
+    parser.add_argument("--bottom", default=DEFAULT_BOTTOM, help="Bottom image file")
+    args = parser.parse_args()
+
+    try:
+        # Parse and validate size
+        width, height = args.size.split("x")
+    except ValueError:
+        raise ValueError("Invalid size format. Use 'widthxheight' (e.g., 1920x1080).")
+
+    logging.info(f"Creating SVG slide...")
+    logging.info(f"Output file: {args.filename}")
+    logging.info(f"Dimensions: {width}x{height}")
+    logging.info(f"Header file: {args.header}")
+    logging.info(f"Bottom file: {args.bottom}")
+
+    create_svg(
+        args.filename, 
+        size=(f"{width}px", f"{height}px"), 
+        header_href=args.header, 
+        bottom_href=args.bottom
+    )
