@@ -4,8 +4,9 @@ def create_svg(filename):
     # Create an instance of svgwrite.Drawing with updated dimensions
     dwg = svgwrite.Drawing(filename, size=("1920px", "1080px"))
 
-    # Add a rectangle for the header (x, y, width, height, fill color)
-    dwg.add(dwg.rect(insert=(0, 0), size=(1920, 150), fill="lightblue", id="header"))
+    # Add the header SVG image
+    dwg.add(dwg.image(href="header.svg", insert=(0, 0), size=(1920, 150)))
+    dwg.add(dwg.image(href="header.svg", insert=(0, 1920-150), size=(1920, 150)))
 
     # Save the SVG to the specified file
     dwg.save()
