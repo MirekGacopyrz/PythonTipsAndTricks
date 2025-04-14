@@ -4,7 +4,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-def create_svg(filename, size=("1920px", "1080px"), header_href="header.svg"):
+def create_svg(filename, size=("1920px", "1080px"), header_href="header.svg",bottom_href="bottom.svg"):
     """
     Create an SVG file with a header image at the top and bottom.
 
@@ -20,9 +20,9 @@ def create_svg(filename, size=("1920px", "1080px"), header_href="header.svg"):
     dwg = svgwrite.Drawing(filename, size=size)
 
     # Add the header SVG image at the top and bottom
-    header_height = 150  # Default header height
-    for y_pos in [0, int(size[1].replace("px", "")) - header_height]:
-        dwg.add(dwg.image(href=header_href, insert=(0, y_pos), size=(size[0], f"{header_height}px")))
+
+    dwg.add(dwg.image(href=header_href, insert=(0, 0)))
+    dwg.add(dwg.image(href=bottom_href, insert=(0, int(size[1].replace("px", ""))-150)))
 
     # Save the SVG to the specified file
     dwg.save()
